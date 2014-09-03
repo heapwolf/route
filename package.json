@@ -1,0 +1,8 @@
+{
+  "name": "route",
+  "version": "0.1.0",
+  "repo": "hij1nx/route",
+  "description": "A simple http router in c++",
+  "keywords": ["http", "router", "routing", "sinatra"],
+  "src": ["route.h", "route.cc"]
+}
