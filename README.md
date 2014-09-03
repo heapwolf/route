@@ -37,7 +37,7 @@ int main() {
 clib install hij1nx/route
 ```
 
-# COMPILE
+# TEST
 ```bash
 make
 ```
