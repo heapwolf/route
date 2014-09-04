@@ -1,12 +1,13 @@
-CXX ?= g++
-export CXXFLAGS
+all: build test
 
-CXXFLAGS += -std=c++1y
+gyp: 
+	git clone --depth 1 https://chromium.googlesource.com/external/gyp.git ./deps/gyp
 
-all: ./test
+build: gyp
+	deps/gyp/gyp --depth=. -Goutput_dir=./out -Icommon.gypi --generator-output=./build -Dlibrary=static_library -f make
 
-./test: test.cc
-	$(CXX) -o test ./route.cc ./test.cc $(CXXFLAGS)
-	./test
+test: test.cc
+	make -C ./build/ test
+	cp ./build/out/Release/test ./test
 
 .PHONY: test
