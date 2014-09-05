@@ -37,12 +37,12 @@ class Route {
     //
     // a pattern used to replace the url template's "captures".
     // 
-    const string capture_pattern = "([._:!\\sa-zA-Z0-9-]+)";
+    const string capture_pattern = "(?:([^\\/]+?))";
 
     //
     // a pattern for finding "captures" in a url template.
     //
-    const string path_pattern = ":?([^\\/]+)";
+    const string path_pattern = ":([^\\/]+)?";
 
     //
     // cache each regex and its keys as it is created by the 
@@ -73,13 +73,12 @@ class Match {
 
   private:
     Route *route;
-    Path path;
     map<string, string> pairs;
 
   public:
 
     string get(string key);
-    bool test(string tmpl);
+    int test(string tmpl);
 
     Match(Route &r) : route(&r) {}
     ~Match() {}
