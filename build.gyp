@@ -6,7 +6,8 @@
       'product_name': 'route',
       'type': 'static_library',
       'sources': [
-       'route.cc'
+       'route.h',
+       'route.cc',
       ],
     },
     {
