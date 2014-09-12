@@ -18,11 +18,11 @@ namespace route {
     return "";
   }
 
-  int Match::test(string tmpl) {
+  bool Match::test(string tmpl) {
 
     pairs.clear();
     Path path;
-    int pos = 0;
+    keys = 0;
 
     if (route->cache.count(tmpl)) {
       path = route->cache.at(tmpl);
@@ -53,17 +53,18 @@ namespace route {
     }
 
     smatch sm_values;
-    regex_match(route->url, sm_values, path.re);
-
-    if (sm_values.size() <= 1) return 0;
+    if (!regex_match(route->url, sm_values, path.re)) {
+      return false;
+    }
+  
+    if (sm_values.size() < 1) return true;
 
     for (auto i = 0; i < sm_values.size() - 1; i++) {
       string key = path.keys[i];
       pairs.insert(pair<string, string>(key, sm_values[i + 1]));
-      pos++;
+      keys++;
     }
-
-    return pos;
+    return true;
   }
 
 } // namespace url

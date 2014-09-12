@@ -76,9 +76,9 @@ class Match {
     map<string, string> pairs;
 
   public:
-
+    int keys;
     string get(string key);
-    int test(string tmpl);
+    bool test(string tmpl);
 
     Match(Route &r) : route(&r) {}
     ~Match() {}
