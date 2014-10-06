@@ -57,7 +57,7 @@ class Route {
     // set the url for this instance, create a regex
     // from the url and return a match instance.
     //
-    Match set(string u); 
+    Match set(const string& u); 
 
     Route(/* options */) {
       //
@@ -77,8 +77,8 @@ class Match {
 
   public:
     int keys;
-    string get(string key);
-    bool test(string tmpl);
+    string get(const string& key);
+    bool test(const string& tmpl);
 
     Match(Route &r) : route(&r) {}
     ~Match() {}
