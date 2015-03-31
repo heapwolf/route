@@ -4,21 +4,21 @@ namespace route {
 
   using namespace std;
 
-  Match Route::set(string u) {
+  Match Route::set(const string& u) {
     url = u;
     path_to_regex = regex(path_pattern); 
     Match m(*this);
     return m;
   }
 
-  string Match::get(string key) {
+  string Match::get(const string& key) {
     if (pairs.count(key)) {
       return pairs.at(key);
     }
     return "";
   }
 
-  bool Match::test(string tmpl) {
+  bool Match::test(const string& tmpl) {
 
     pairs.clear();
     Path path;
